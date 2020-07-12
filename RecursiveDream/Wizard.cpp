@@ -20,8 +20,11 @@ void Wizard::move() {
 		int nextplace = position_.x + Wizard_Width;
 		bool flag = true;
 		for (auto item : blocks_) {
-			flag = item.ChenkPosition(sf::Vector2f(nextplace,position_.y ));
-			if (!flag)break;
+			if (item.color_ != GColor) {
+
+				flag = item.ChenkPosition(sf::Vector2f(nextplace, position_.y));
+				if (!flag)break;
+			}
 		}
 		if (flag) {
 			position_.x = nextplace;
@@ -31,8 +34,11 @@ void Wizard::move() {
 		int nextplace = position_.x - Wizard_Width;
 		bool flag = true;
 		for (auto item : blocks_) {
-			flag = item.ChenkPosition(sf::Vector2f(nextplace, position_.y));
-			if (!flag)break;
+			if (item.color_ != GColor) {
+
+				flag = item.ChenkPosition(sf::Vector2f(nextplace, position_.y));
+				if (!flag)break;
+			}
 		}
 		if (flag) {
 			position_.x = nextplace;
@@ -42,9 +48,11 @@ void Wizard::move() {
 		int nextpalce= position_.y - JumpDistance;
 		bool flag = true;
 		for (auto item : blocks_) {
-			
-			flag = item.ChenkPosition(sf::Vector2f(position_.x, nextpalce));
-			if (!flag)break;
+			if (item.color_ != GColor) {
+				flag = item.ChenkPosition(sf::Vector2f(position_.x, nextpalce));
+				if (!flag)break;
+			}
+
 		}
 		if (flag) {
 			--lefttime;
@@ -63,8 +71,11 @@ void Wizard::move() {
 		int nextpalce = position_.y + JumpDistance;
 		bool flag = true;
 		for (auto item : blocks_) {
-			flag = item.ChenkPosition(sf::Vector2f(position_.x, nextpalce));
-			if (!flag)break;
+			if (item.color_ != GColor) {
+				flag = item.ChenkPosition(sf::Vector2f(position_.x, nextpalce));
+				if (!flag)break;
+			}
+
 		}
 		if (flag) {
 			position_.y = nextpalce;
