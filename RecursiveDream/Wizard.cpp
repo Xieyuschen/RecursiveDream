@@ -4,7 +4,7 @@
 using namespace Dreamer;
 Wizard::Wizard() 
 {
-	position_ = sf::Vector2f(0,0);
+	position_ = sf::Vector2f(0,380);
 	direction_ = Direction::Right;
 	rec_.setPosition(position_);
 	rec_.setSize(sf::Vector2f(Wizard_Width, Wizard_Height));
@@ -12,15 +12,7 @@ Wizard::Wizard()
 	rec_.setOutlineThickness(-1.f);
 }
 void Wizard::move() {
-	if (direction_ == Direction::Left) {
-		if (position_.x - Wizard_Width > 0) {
-			position_.x -= Wizard_Width;
-		}
-	}
-	if (direction_ == Direction::Right) {
-		if (position_.x + Wizard_Width)
-			position_.x += Wizard_Width;
-	}
+
 }
 void Wizard::render(sf::RenderWindow& window) {
 	//this function maybe useless
@@ -31,10 +23,14 @@ void Wizard::render(sf::RenderWindow& window) {
 void Wizard::handleInput(sf::RenderWindow& window) {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
 		direction_ = Direction::Left;
+		position_.x -= Wizard_Width;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
 		direction_ = Direction::Right;
+		position_.x += Wizard_Height;
 	}
+	rec_.setPosition(position_);
+
 }
 void Wizard::update(sf::Time delta) {
 	move();

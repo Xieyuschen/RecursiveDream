@@ -41,7 +41,6 @@ void Game::handleInput() {
 		if (event.type == sf::Event::Closed)
 			window_.close();
 	}
-
 	Game::Screen->handleInput(window_);
 }
 

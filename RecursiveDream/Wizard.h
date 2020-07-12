@@ -11,8 +11,8 @@ namespace Dreamer {
 	{
 		const int LevelSpeed=8;
 		const int VertialSpeed=10;
-		const int Wizard_Width=100;
-		const int Wizard_Height=100;
+		const int Wizard_Width=10;
+		const int Wizard_Height=10;
 	public:
 		void update(sf::Time delta);
 		void render(sf::RenderWindow& window);
