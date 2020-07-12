@@ -13,20 +13,13 @@ Wizard::Wizard()
 	rec_.setOutlineColor(sf::Color::Green);
 	rec_.setOutlineThickness(-1.f);
 
-	Block b1(sf::Color::White, sf::Vector2f(200,400 ), sf::Vector2f(100, 30));
-	Block b2(sf::Color::White, sf::Vector2f(300, 300), sf::Vector2f(100, 30));
-
-	Block b3(sf::Color::White, sf::Vector2f(400,200 ), sf::Vector2f(100, 30));
-
-	blocks.push_back(b1);
-	blocks.push_back(b2);
-	blocks.push_back(b3);
 }
 void Wizard::move() {
+	
 	if (state_ == State::Jumping && lefttime > 0) {
 		int nextpalce= position_.y - JumpDistance;
 		bool flag = true;
-		for (auto item : blocks) {
+		for (auto item : blocks_) {
 			flag = item.ChenkPosition(sf::Vector2f(position_.x, nextpalce));
 			if (!flag)break;
 		}
@@ -46,7 +39,7 @@ void Wizard::move() {
 		int temp = position_.y + JumpDistance;
 		int nextpalce = position_.y + JumpDistance;
 		bool flag = true;
-		for (auto item : blocks) {
+		for (auto item : blocks_) {
 			flag = item.ChenkPosition(sf::Vector2f(position_.x, nextpalce));
 			if (!flag)break;
 		}
@@ -70,7 +63,7 @@ void Wizard::move() {
 void Wizard::render(sf::RenderWindow& window) {
 	//this function maybe useless
 	//window.clear();
-	for (auto item : blocks) {
+	for (auto item : blocks_) {
 		item.render(window);
 	}
 	window.draw(rec_);
@@ -78,6 +71,9 @@ void Wizard::render(sf::RenderWindow& window) {
 }
 void Wizard::handleInput(sf::RenderWindow& window) {
 	move();
+	if (position_.x > 550) {
+		window.close();
+	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
 		sf::RectangleShape rec(sf::Vector2f(680, 480));
 		rec.setFillColor(sf::Color::White);
@@ -110,4 +106,7 @@ bool Wizard::CheckBoundary(int y) {
 		return false;
 	}
 	return true;
+}
+void Wizard::AddBlock(Block block) {
+	blocks_.push_back(block);
 }

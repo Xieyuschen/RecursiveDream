@@ -24,6 +24,7 @@ namespace Dreamer {
 		void render(sf::RenderWindow& window);
 		void handleInput(sf::RenderWindow& window);
 		bool CheckBoundary(int y);
+		void AddBlock(Block block);
 		Wizard();
 	private:
 		//when move left or right,we can use just one cycle to accomplete it.
@@ -33,7 +34,7 @@ namespace Dreamer {
 		sf::Vector2f position_;
 		Direction direction_;
 		sf::RectangleShape rec_;
-		std::vector<Block> blocks;
+		std::vector<Block> blocks_;
 
 	};
 
