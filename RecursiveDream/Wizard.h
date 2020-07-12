@@ -17,16 +17,18 @@ namespace Dreamer {
 		const int Wizard_Width=10;
 		const int Wizard_Height=10;
 		const int JumpCycleTimes = 5;
+		const int JumpDistance = Wizard_Height*2;
 	public:
 		void update(sf::Time delta);
 		void render(sf::RenderWindow& window);
 		void handleInput(sf::RenderWindow& window);
+		bool CheckBoundary(int y);
 		Wizard();
 	private:
 		//when move left or right,we can use just one cycle to accomplete it.
 		void move();
 		State state_;
-		int lefttime = 0;
+		int lefttime = -1;
 		sf::Vector2f position_;
 		Direction direction_;
 		sf::RectangleShape rec_;

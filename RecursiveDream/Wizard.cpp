@@ -14,6 +14,7 @@ Wizard::Wizard()
 }
 void Wizard::move() {
 
+
 }
 void Wizard::render(sf::RenderWindow& window) {
 	//this function maybe useless
@@ -22,6 +23,24 @@ void Wizard::render(sf::RenderWindow& window) {
 	window.display();
 }
 void Wizard::handleInput(sf::RenderWindow& window) {
+	if (state_ == State::Jumping && lefttime > 0) {
+		position_.y -= JumpDistance;
+		--lefttime;
+		if (lefttime == 0) {
+			state_ = State::Falling;
+		}
+	}
+	if (state_ == State::Falling) {
+		int temp= position_.y + JumpDistance;
+		if (CheckBoundary(temp)) {
+			position_.y = temp;
+		}
+		else
+		{
+			state_ = State::Grounding;
+		}
+
+	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
 		direction_ = Direction::Left;
 		position_.x -= Wizard_Width;
@@ -34,8 +53,8 @@ void Wizard::handleInput(sf::RenderWindow& window) {
 		if (state_ == State::Grounding) {
 			state_ = State::Jumping;
 			lefttime = JumpCycleTimes;
-
-			position_.y -= Wizard_Height * 2;
+			position_.y -= JumpDistance;
+			--lefttime;
 		}
 	}
 	rec_.setPosition(position_);
@@ -43,4 +62,10 @@ void Wizard::handleInput(sf::RenderWindow& window) {
 }
 void Wizard::update(sf::Time delta) {
 	move();
+}
+bool Wizard::CheckBoundary(int y) {
+	if (y >= 450) {
+		return false;
+	}
+	return true;
 }
