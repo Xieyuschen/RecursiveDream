@@ -17,7 +17,7 @@ namespace Dreamer {
 		const int VertialSpeed=10;
 		const int Wizard_Width=10;
 		const int Wizard_Height=10;
-		const int JumpCycleTimes = 5;
+		const int JumpCycleTimes = 8;
 		const int JumpDistance = Wizard_Height*2;
 	public:
 		void update(sf::Time delta);
