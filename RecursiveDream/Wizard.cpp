@@ -18,9 +18,9 @@ void Wizard::move() {
 }
 void Wizard::render(sf::RenderWindow& window) {
 	//this function maybe useless
-	window.clear();
+	//window.clear();
 	window.draw(rec_);
-	window.display();
+	//window.display();
 }
 void Wizard::handleInput(sf::RenderWindow& window) {
 	if (state_ == State::Jumping && lefttime > 0) {
@@ -59,6 +59,12 @@ void Wizard::handleInput(sf::RenderWindow& window) {
 	}
 	rec_.setPosition(position_);
 
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+		sf::RectangleShape rec(sf::Vector2f(680, 480));
+		rec.setFillColor(sf::Color::White);
+		window.draw(rec);
+		window.display();
+	}
 }
 void Wizard::update(sf::Time delta) {
 	move();
