@@ -7,8 +7,9 @@
 using namespace Dreamer;
 const sf::Time Game::TimePerFrame = sf::seconds(1.f / 10.f);
 std::shared_ptr<Screen> Game::Screen = std::make_shared<MenuScreen>();
-
 Game::Game() :window_(sf::VideoMode(Width, Height), "ReDreamer") {}
+bool FLAG = false;
+sf::Color GColor = sf::Color::Black;
 void Game::run() {
 	sf::Clock clock;
 	sf::Time timeSinceLastUpdate = sf::Time::Zero;
@@ -18,7 +19,7 @@ void Game::run() {
 
 		sf::Time delta = clock.restart();
 		timeSinceLastUpdate += delta;
-
+		FLAG = true;
 		while (timeSinceLastUpdate > Game::TimePerFrame)
 		{
 			timeSinceLastUpdate -= TimePerFrame;
@@ -30,15 +31,15 @@ void Game::run() {
 }
 void Game::render() {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-		if (color_ == sf::Color::Black)
+		if (color_ == sf::Color::Black) 
+			
 			color_ = sf::Color::White;
 		else
 			color_ = sf::Color::Black;
-
+		GColor = color_;
 	}
-
+	
 	window_.clear(color_);
-
 	Game::Screen->render(window_);
 	window_.display();
 }

@@ -15,7 +15,9 @@ namespace Dreamer {
 		void update(sf::Time delta) override;
 		void render(sf::RenderWindow& window) override;
 	private:
-		Wizard wizard_;
+		Wizard currentwizard_;
+		std::vector<Wizard> wizards_;
+		int currentnum = 0;
 	}; 
 }
 #endif // !GAMESCREEN_H 

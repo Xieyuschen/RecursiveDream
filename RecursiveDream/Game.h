@@ -6,10 +6,13 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include"Screen.h"
+extern bool FLAG;
+extern sf::Color GColor;
 namespace Dreamer {
 	class Game
 	{
 	public:
+
 		static const int Width = 640;
 		static const int Height = 480;
 		Game();

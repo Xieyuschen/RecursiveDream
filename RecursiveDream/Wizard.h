@@ -25,17 +25,18 @@ namespace Dreamer {
 		void handleInput(sf::RenderWindow& window);
 		bool CheckBoundary(int y);
 		void AddBlock(Block block);
+		sf::Vector2f position_;
+		Wizard& operator=(Wizard& w);
 		Wizard();
 	private:
 		//when move left or right,we can use just one cycle to accomplete it.
 		void move();
 		State state_;
 		int lefttime = -1;
-		sf::Vector2f position_;
 		Direction direction_;
 		sf::RectangleShape rec_;
 		std::vector<Block> blocks_;
-
+		bool IsBlack = true;
 	};
 
 }
