@@ -1,6 +1,7 @@
 #include "Wizard.h"
 #include"Game.h"
 #include<SFML/Graphics.hpp>
+#include"Block.h"
 using namespace Dreamer;
 Wizard::Wizard() 
 {
@@ -11,27 +12,31 @@ Wizard::Wizard()
 	rec_.setSize(sf::Vector2f(Wizard_Width, Wizard_Height));
 	rec_.setOutlineColor(sf::Color::Green);
 	rec_.setOutlineThickness(-1.f);
+
+	Block b(sf::Color::White, sf::Vector2f(200,380 ), sf::Vector2f(100, 30));
+	blocks.push_back(b);
 }
 void Wizard::move() {
-
-
-}
-void Wizard::render(sf::RenderWindow& window) {
-	//this function maybe useless
-	//window.clear();
-	window.draw(rec_);
-	//window.display();
-}
-void Wizard::handleInput(sf::RenderWindow& window) {
 	if (state_ == State::Jumping && lefttime > 0) {
-		position_.y -= JumpDistance;
-		--lefttime;
+		int nextpalce= position_.y - JumpDistance;
+		bool flag = true;
+		for (auto item : blocks) {
+			flag = item.ChenkPosition(sf::Vector2f(position_.x, nextpalce));
+		}
+		if (flag) {
+			--lefttime;
+			position_.y = nextpalce;
+		}
+		else
+		{
+			state_ = State::Falling;
+		}
 		if (lefttime == 0) {
 			state_ = State::Falling;
 		}
 	}
 	if (state_ == State::Falling) {
-		int temp= position_.y + JumpDistance;
+		int temp = position_.y + JumpDistance;
 		if (CheckBoundary(temp)) {
 			position_.y = temp;
 		}
@@ -41,6 +46,19 @@ void Wizard::handleInput(sf::RenderWindow& window) {
 		}
 
 	}
+
+}
+void Wizard::render(sf::RenderWindow& window) {
+	//this function maybe useless
+	//window.clear();
+	for (auto item : blocks) {
+		item.render(window);
+	}
+	window.draw(rec_);
+	//window.display();
+}
+void Wizard::handleInput(sf::RenderWindow& window) {
+	move();
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
 		direction_ = Direction::Left;
 		position_.x -= Wizard_Width;
@@ -67,7 +85,6 @@ void Wizard::handleInput(sf::RenderWindow& window) {
 	}
 }
 void Wizard::update(sf::Time delta) {
-	move();
 }
 bool Wizard::CheckBoundary(int y) {
 	if (y >= 450) {

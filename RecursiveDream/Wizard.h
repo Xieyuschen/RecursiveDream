@@ -2,6 +2,7 @@
 #ifndef WIZRD_H
 #define WIZRD_H
 #include<SFML/Graphics.hpp>
+#include"Block.h"
 namespace Dreamer {
 
 	enum class Direction {
@@ -32,6 +33,8 @@ namespace Dreamer {
 		sf::Vector2f position_;
 		Direction direction_;
 		sf::RectangleShape rec_;
+		std::vector<Block> blocks;
+
 	};
 
 }

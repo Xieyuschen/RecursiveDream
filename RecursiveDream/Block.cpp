@@ -7,5 +7,13 @@ Block::Block(sf::Color color, sf::Vector2f position, sf::Vector2f large)
 }
 void Block::render(sf::RenderWindow& window) {
 	window.draw(rec_);
-	//window.display();
+
+}
+
+bool Block::ChenkPosition(sf::Vector2f position) {
+	if (position.x > position_.x && position.x<position_.x + large_.x
+		&& position.y>position_.y && position.y < position_.y + large_.y) {
+		return false;
+	}
+	else return true;
 }

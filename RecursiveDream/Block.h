@@ -8,6 +8,9 @@ namespace Dreamer {
 	public:
 		void render(sf::RenderWindow& window);
 		Block(sf::Color color, sf::Vector2f position, sf::Vector2f large);
+
+		//if the position input is emited in block,return false
+		bool ChenkPosition(sf::Vector2f position);
 	public:
 		sf::Color color_;
 		sf::Vector2f position_;

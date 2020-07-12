@@ -16,7 +16,6 @@ namespace Dreamer {
 		void render(sf::RenderWindow& window) override;
 	private:
 		Wizard wizard_;
-		std::vector<Block> blocks;
 	}; 
 }
 #endif // !GAMESCREEN_H 
