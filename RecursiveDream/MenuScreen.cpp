@@ -1,5 +1,6 @@
 #include "MenuScreen.h"
 #include"Game.h"
+#include"GameScreen.h"
 using namespace Dreamer;
 MenuScreen::MenuScreen() 
 {
@@ -31,8 +32,8 @@ void MenuScreen::render(sf::RenderWindow& window) {
 }
 void MenuScreen::handleInput(sf::RenderWindow& window) {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-	//	Game::Screen = std::make_shared<GameScreen>();
-	//else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+		Game::Screen = std::make_shared<GameScreen>();
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 		window.close();
 }
 void MenuScreen::update(sf::Time delta) {
