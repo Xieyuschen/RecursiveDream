@@ -16,5 +16,5 @@ namespace Dreamer {
 		Wizard wizard_;
 	}; 
 }
-#endif // !GAMESCREEN_H
+#endif // !GAMESCREEN_H 
 

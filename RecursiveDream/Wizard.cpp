@@ -6,6 +6,7 @@ Wizard::Wizard()
 {
 	position_ = sf::Vector2f(0,380);
 	direction_ = Direction::Right;
+	state_ = State::Grounding;
 	rec_.setPosition(position_);
 	rec_.setSize(sf::Vector2f(Wizard_Width, Wizard_Height));
 	rec_.setOutlineColor(sf::Color::Green);
@@ -28,6 +29,14 @@ void Wizard::handleInput(sf::RenderWindow& window) {
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
 		direction_ = Direction::Right;
 		position_.x += Wizard_Height;
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+		if (state_ == State::Grounding) {
+			state_ = State::Jumping;
+			lefttime = JumpCycleTimes;
+
+			position_.y -= Wizard_Height * 2;
+		}
 	}
 	rec_.setPosition(position_);
 
