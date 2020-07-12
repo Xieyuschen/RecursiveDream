@@ -29,7 +29,16 @@ void Game::run() {
 	}
 }
 void Game::render() {
-	window_.clear();
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+		if (color_ == sf::Color::Black)
+			color_ = sf::Color::White;
+		else
+			color_ = sf::Color::Black;
+
+	}
+
+	window_.clear(color_);
+
 	Game::Screen->render(window_);
 	window_.display();
 }

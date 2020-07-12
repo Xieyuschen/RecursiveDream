@@ -24,7 +24,7 @@ namespace Dreamer {
 	private:
 		sf::RenderWindow window_;
 		static const sf::Time TimePerFrame;
-
+		sf::Color color_ = sf::Color::Black;
 	};
 }
 

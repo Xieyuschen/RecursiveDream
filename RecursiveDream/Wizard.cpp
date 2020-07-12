@@ -78,6 +78,11 @@ void Wizard::render(sf::RenderWindow& window) {
 }
 void Wizard::handleInput(sf::RenderWindow& window) {
 	move();
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+		sf::RectangleShape rec(sf::Vector2f(680, 480));
+		rec.setFillColor(sf::Color::White);
+		window.draw(rec);
+	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
 		direction_ = Direction::Left;
 		position_.x -= Wizard_Width;
@@ -96,12 +101,7 @@ void Wizard::handleInput(sf::RenderWindow& window) {
 	}
 	rec_.setPosition(position_);
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-		sf::RectangleShape rec(sf::Vector2f(680, 480));
-		rec.setFillColor(sf::Color::White);
-		window.draw(rec);
-		window.display();
-	}
+
 }
 void Wizard::update(sf::Time delta) {
 }
