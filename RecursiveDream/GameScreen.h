@@ -14,10 +14,14 @@ namespace Dreamer {
 		void handleInput(sf::RenderWindow& window) override;
 		void update(sf::Time delta) override;
 		void render(sf::RenderWindow& window) override;
+		//I can use it after make_shared :)
+		//const& & or just like following?
+		void AddBlock(Block block);
 	private:
-		Wizard currentwizard_;
-		std::vector<Wizard> wizards_;
-		int currentnum = 0;
+		void move();
+	private:
+		Wizard wizard_;
+		std::vector<Block> blocks_;
 	}; 
 }
 #endif // !GAMESCREEN_H 

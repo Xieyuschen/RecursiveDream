@@ -9,7 +9,14 @@ void Block::render(sf::RenderWindow& window) {
 	window.draw(rec_);
 
 }
-
+//bool Block::ChenkPosition(Wizard wizard) {
+//	sf::Vector2f position = wizard.position_;
+//	if (position.x > position_.x && position.x<position_.x + large_.x
+//		&& position.y>position_.y && position.y < position_.y + large_.y) {
+//		return false;
+//	}
+//	else return true;
+//}
 bool Block::ChenkPosition(sf::Vector2f position) {
 	if (position.x > position_.x && position.x<position_.x + large_.x
 		&& position.y>position_.y && position.y < position_.y + large_.y) {

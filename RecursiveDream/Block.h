@@ -2,7 +2,7 @@
 #ifndef BLOCK_H
 #define BLOCK_H
 #include<SFML/Graphics.hpp>
-
+#include"Wizard.h"
 namespace Dreamer {
 	class Block
 	{
@@ -11,6 +11,7 @@ namespace Dreamer {
 		Block(sf::Color color, sf::Vector2f position, sf::Vector2f large);
 
 		//if the position input is emited in block,return false
+		//bool ChenkPosition(Wizard wizard);
 		bool ChenkPosition(sf::Vector2f position);
 	public:
 		sf::Color color_;

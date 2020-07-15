@@ -13,6 +13,7 @@ namespace Dreamer {
 	};
 	class Wizard
 	{
+	public:
 		const int LevelSpeed=8;
 		const int VertialSpeed=10;
 		const int Wizard_Width=10;
@@ -24,19 +25,19 @@ namespace Dreamer {
 		void render(sf::RenderWindow& window);
 		void handleInput(sf::RenderWindow& window);
 		bool CheckBoundary(int y);
-		void AddBlock(Block block);
+		//void AddBlock(Block block);
 		sf::Vector2f position_;
-		Wizard& operator=(Wizard& w);
+		//Wizard& operator=(Wizard& w);
 		Wizard();
-	private:
+
+		//they're wrap in another class and never exposed to user
+	public:
 		//when move left or right,we can use just one cycle to accomplete it.
 		void move();
 		State state_;
 		int lefttime = -1;
 		Direction direction_;
 		sf::RectangleShape rec_;
-		std::vector<Block> blocks_;
-		bool IsBlack = true;
 		sf::Texture tex_;
 
 	};
