@@ -2,6 +2,7 @@
 #ifndef BLOCK_H
 #define BLOCK_H
 #include<SFML/Graphics.hpp>
+
 namespace Dreamer {
 	class Block
 	{

@@ -13,7 +13,7 @@ Wizard::Wizard()
 	rec_.setSize(sf::Vector2f(Wizard_Width, Wizard_Height));
 	rec_.setOutlineColor(sf::Color::Green);
 	rec_.setOutlineThickness(-1.f);
-
+	tex_.loadFromFile("../Images/Rperson.png");
 }
 void Wizard::move() {
 	if (direction_ == Direction::Right) {
@@ -99,6 +99,7 @@ void Wizard::render(sf::RenderWindow& window) {
 	for (auto item : blocks_) {
 		item.render(window);
 	}
+	rec_.setTexture(&tex_);
 	window.draw(rec_);
 	//window.display();
 }

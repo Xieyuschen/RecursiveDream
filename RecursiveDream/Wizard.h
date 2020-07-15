@@ -37,6 +37,8 @@ namespace Dreamer {
 		sf::RectangleShape rec_;
 		std::vector<Block> blocks_;
 		bool IsBlack = true;
+		sf::Texture tex_;
+
 	};
 
 }
