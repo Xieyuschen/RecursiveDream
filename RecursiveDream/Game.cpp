@@ -1,10 +1,10 @@
 #include "Game.h"
-
 #include<SFML/Graphics.hpp>
 #include"MenuScreen.h"
 #include <SFML/Audio.hpp>
 #include <vector>
 #include <memory>
+
 using namespace Dreamer;
 const sf::Time Game::TimePerFrame = sf::seconds(1.f / 10.f);
 std::shared_ptr<Screen> Game::Screen = std::make_shared<MenuScreen>();

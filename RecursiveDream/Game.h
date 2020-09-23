@@ -3,8 +3,8 @@
 #define GAME_H
 #include <memory>
 #include <vector>
-#include <SFML/Graphics.hpp>
-#include <SFML/Audio.hpp>
+#include"SFML/Graphics.hpp"
+#include "SFML/Audio.hpp"
 #include"Screen.h"
 extern bool FLAG;
 extern sf::Color GColor;
